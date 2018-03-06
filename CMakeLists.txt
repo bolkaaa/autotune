@@ -2,9 +2,9 @@ cmake_minimum_required (VERSION 2.8)
 
 project (AutoTune)
 
-include_directories(/home/matus/Downloads/supercollider/include/plugin_interface)
-include_directories(/home/matus/Downloads/supercollider/include/common)
-include_directories(/home/matus/Downloads/supercollider/external_libraries/libsndfile/)
+include_directories(/home/bolka/GitHub/supercollider/include/plugin_interface)
+include_directories(/home/bolka/GitHub/supercollider/include/common)
+include_directories(/home/bolka/GitHub/supercollider/external_libraries/libsndfile/)
 
 set(CMAKE_SHARED_MODULE_PREFIX "") 
 set(CMAKE_CXX_FLAGS	"-std=c++11 -g -Wall -Wextra -Wconversion")
