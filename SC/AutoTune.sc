@@ -29,17 +29,34 @@
 
 	}
 
+    // USAGE
+    
+    /*
+        ~tuneback = { arg tune1 = 0, tune2 = 0;
+            TuneBack.ar(In.ar(0, 1), In.ar(1, 1), tune1, tune2);
+        }.play;
+        
+        try different settings:
+        
+        ~tuneback.set(\tune1, 1);
+        ~tuneback.set(\tune1, 0.5);
+        ~tuneback.set(\tune2, 0.75);
+        ~tuneback.set(\tune2, 1);
+        ~tuneback.set(\tune2, 0);
+        
+    */
+
 	TuneBack : UGen {
 
-		*new { arg in1, in2, tune1, tune2;
+		*ar { arg in1, in2, tune1 = 0.0, tune2 = 0.0;
 
 			var sig1, sig2, pitch1 = 0, pitch2 = 0, conf1 = 0, conf2 = 0;
 			var fb;
 
 			fb = LocalIn.ar(4, 0);
 
-			#sig1, pitch1, conf1 = AutoTune.ar(in1, fixed: fb[0], pull: tune1, fcorr:1);
-			#sig2, pitch2, conf2 = AutoTune.ar(in2, fixed: fb[2], pull: tune2, fcorr:1);
+			#sig1, pitch1, conf1 = AutoTune.ar(in1, fixed: fb[2], pull: tune1, fcorr:1);
+			#sig2, pitch2, conf2 = AutoTune.ar(in2, fixed: fb[0], pull: tune2, fcorr:1);
 
 			LocalOut.ar([pitch1, conf1, pitch2, conf2]);
 
